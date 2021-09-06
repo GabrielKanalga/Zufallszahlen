@@ -1,0 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package zufallszahl.lernatelier;
+
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Gabriel Kanalga
+ */
+
+public class ZufallszahlLernatelier {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int versuche = 0;
+       
+        
+    
+     Random zufallsZahl= new Random();
+     int tief = 1;
+     int hoch = 100;
+     int rnd = zufallsZahl.nextInt(hoch-tief) + tief;
+    
+     
+           while(true)
+      {
+          try{
+      String eingabe = JOptionPane.showInputDialog(null, 
+                "Geben Sie eine Zahl zwischen 1 und 100 ein",
+                "Zahlen raten", 
+                JOptionPane.PLAIN_MESSAGE);
+            int eingabeZahl = Integer.parseInt(eingabe);
+        
+       if(eingabeZahl > 100){
+            JOptionPane.showMessageDialog
+        (null,"Gebe eine Zahl zwischen 1-100 ein kein anderes Zeichen!!!","ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+         if(eingabeZahl < 0){
+            JOptionPane.showMessageDialog
+        (null,"Gebe eine Zahl zwischen 1-100 ein kein anderes Zeichen!!!","ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+       
+        if(rnd < eingabeZahl && eingabeZahl <= 100)
+        {
+            JOptionPane.showMessageDialog
+        (null,"Deine Zahl(" + eingabeZahl + ") ist zu gross","Verlieren", JOptionPane.PLAIN_MESSAGE);
+        versuche ++;
+        }
+          
+        
+        if(rnd > eingabeZahl && eingabeZahl >= 0 )
+        {
+            JOptionPane.showMessageDialog
+        (null,"Deine Zahl (" + eingabeZahl + ") ist zu klein","Verloren", JOptionPane.PLAIN_MESSAGE);
+        versuche ++;
+        }
+        
+         
+        if(rnd == eingabeZahl)
+        {
+            versuche ++;
+            JOptionPane.showMessageDialog
+        (null,"Du hast die richtige Zahl erraten deine Zahl (" + eingabeZahl + ") ist richtg Sie hatten " + versuche +" Versuche","Gewonnen", JOptionPane.PLAIN_MESSAGE);
+        break;
+        }
+      
+        
+        
+        
+        
+          }catch(Exception e){
+                JOptionPane.showMessageDialog
+        (null,"Gebe eine Zahl zwischen 1-100 ein kein anderes Zeichen!!!","ERROR", JOptionPane.ERROR_MESSAGE);}
+          }
+          }
+        
+        
+        
+      }
